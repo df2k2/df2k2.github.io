@@ -1,0 +1,243 @@
+// Top bar
+.site-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transform: translateZ(0); // to force nav rendering to GPU
+  z-index: $zindex-appbar;
+
+  // recreate spectrum tabs bottom border
+
+  border-bottom: var(--spectrum-tabs-m-rule-size, var(--spectrum-alias-border-size-thick)) solid;
+  border-bottom-color: var(--spectrum-tabs-m-rule-color, var(--spectrum-alias-border-color-light));
+
+}
+
+.site-nav .spectrum-Tabs {
+  border-bottom: none;
+}
+
+.site-header {
+  // To push the content of the page to allow fixed top bar
+  padding-top: $header-height;
+
+  .nav-container {
+    position: relative;
+    display: flex;
+    padding: 0;
+    min-height: $header-height;
+    //margin-bottom: -2px; // border and the current item align
+  }
+
+  .nav-main-wrap {
+    position: relative;
+    z-index: 2;
+    flex: 1 0 auto;
+  }
+
+  .nav-actions {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 20px;
+    z-index: 2;
+  }
+
+  .menu-btn {
+    width: $header-height;
+    height: $header-height;
+    display: none;
+    z-index: 50;
+    border: none;
+  }
+
+  .menu-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../i/icons/menu.svg) center center no-repeat;
+    background-size: 18px;
+    border: none;
+    border-radius: 0;
+    transition: background-color 0.2s linear;
+
+    &:hover {
+      background-color: #fff;
+      transition: background-color 0.2s linear;
+    }
+  }
+
+  .search-btn {
+    width: 45px;
+    height: $header-height;
+    position: relative;
+    z-index: 3;
+
+    .search-trigger {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: none;
+      overflow: hidden;
+
+      .spectrum-Icon {
+        position: relative;
+        top: 12px;
+        left: 6px;
+        fill: #6E6E6E;
+      }
+    }
+  }
+
+  @media ($mobile-threshold) {
+    .site-nav {
+      background: #fff;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+
+    .nav-actions {
+      right: 10px;
+    }
+
+    .nav-container {
+      padding-left: 0;
+    }
+
+    .nav-main-wrap {
+      position: fixed;
+      display: none;
+      overflow: auto;
+      width: 100%;
+      height: calc(100vh - 55px);
+      padding-bottom: $header-height;
+
+      max-width: 400px;
+      z-index: 3000;
+      -webkit-overflow-scrolling: touch;
+      background: $dropdown-bg;
+      transition: all $transition-duration;
+
+      top: $header-height;
+      left: 0;
+
+      z-index: $zindex-appbar - 1;
+    }
+  }
+
+  // mobile menu
+}
+
+@media ($medium-to-large-screen) {
+  .site-nav {
+    background: #fff;
+  }
+
+  .nav-main {
+    padding-left: 20px;
+  }
+
+  .site-header .nav-actions {
+    right: 0;
+  }
+}
+
+
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  width: $sidebar-width;
+  text-decoration: none;
+
+  padding: 0 0 0 20px;
+
+  font-size: 16px;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .logo-image {
+    width: 20px;
+  }
+
+  .logo-text {
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: 7px;
+    color: #EB1000;
+  }
+
+  // Name of the website
+  .site-logo {
+    position: relative;
+
+    color: #4d4d4d;
+
+    font-weight: $font-weight-normal;
+
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-logo::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 1px;
+    height: 1em;
+    margin: 0 10px;
+    border-left: 1px solid #4d4d4d;
+  }
+
+  @media ($medium-screen) {
+    padding-left: 10px;
+  }
+}
+
+.offcanvas-active .nav-main-wrap {
+  display: block;
+}
+
+// Disable scrollbar when menu is open
+body.offcanvas-active {
+  overflow: hidden;
+}
+
+
+// Full width layouts get different treatment
+.layout-home .nav-container,
+.layout-full-width .nav-container,
+.layout-redoc .nav-container,
+.layout-search .nav-container {
+  background: #fff;
+}
+
+
+@media ($compact-threshold) {
+  .site-nav {
+    background: #fff;
+  }
+
+  .logo {
+    width: auto;
+    padding-right: 20px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+}
+
+@media ($mobile-threshold) {
+  .logo-text {
+    display: inline-block;
+  }
+}

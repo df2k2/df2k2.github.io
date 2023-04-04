@@ -1,0 +1,15 @@
+.version-switcher  {
+  position: relative;
+  width: 130px;
+  top: 7px;
+
+  @media ( $mobile-threshold ) {
+
+    z-index: 999;
+    top: 0;
+    width: 320px;
+    margin: 20px 0 20px 40px;
+
+  }
+
+}

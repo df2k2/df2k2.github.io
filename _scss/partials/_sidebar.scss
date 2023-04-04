@@ -1,0 +1,280 @@
+$toggle-width: 32px;
+
+.sidebar {
+  position: fixed;
+  width: $sidebar-width;
+  height: 100vh;
+
+  z-index: 2;
+  background: $light-gray-color;
+
+  // Move sidebar up to provide the background for the logo
+
+  top: 0;
+  padding-top: $header-height;
+
+  // Make sure that the sidebar scrollbar looks nice
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+  }
+
+  .sidebar-wrapper {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: $spacing $spacing*2;
+    padding-bottom: 48px; // magic number is needed to allow visibility of the long sidebars
+  }
+
+  .guide-title {
+    position: relative;
+    @extend .spectrum-Heading,
+    .spectrum-Heading--sizeS;
+    padding: $spacing*4 $spacing*3 $spacing*4 $spacing*3;
+    margin: 0;
+    z-index: 1;
+  }
+
+
+  // Styling the menu
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+
+    li {
+      position: relative;
+      list-style: none;
+    }
+
+    // indents
+    a,
+    span {
+      text-decoration: none;
+      padding-left: 30px;
+    }
+
+    ul li a,
+    ul li span {
+      padding-left: 43px !important;
+    }
+
+    ul li li a,
+    ul li li span {
+      padding-left: 56px !important;
+    }
+
+    // Group titles
+    span {
+      display: block;
+      color: #777777;
+    }
+
+  }
+
+
+
+  /*
+  // second level links
+
+
+
+  // Third level
+  ul ul ul a, ul ul ul span {
+    padding-left: $spacing*6;
+  }
+
+  // Fourth level
+  ul ul ul ul a, ul ul ul ul span {
+    padding-left: $spacing*8;
+  }
+
+
+  // First level lists could use some spacing
+  .sidebar-wrapper > ul {
+    margin-bottom: $spacing*3;
+  }
+  */
+
+  .toc-toggler {
+    display: none;
+  }
+
+}
+
+
+
+.collapsible-navigation {
+
+  position: relative;
+
+  ul ul {
+    display: none;
+  }
+
+  li li .toggle {
+    left: 13px;
+  }
+
+  li li li .toggle {
+    left: 26px;
+  }
+
+  .toggle {
+    background: transparent;
+    border: 2px solid transparent;
+    outline: none;
+    border-radius: 3px;
+    display: block;
+    opacity: .7;
+
+    position: absolute;
+
+    padding: 0;
+    margin: 0;
+
+    top: 0;
+    left: 0;
+    cursor: pointer;
+
+    height: $toggle-width;
+    width: $toggle-width;
+
+    z-index: 10;
+
+    &:after {
+      display: block;
+      content: '';
+      width: 20px;
+      height: 20px;
+      margin: auto;
+      background: url('../i/icons/chevron-right.svg') no-repeat center;
+      transition: all $transition-duration;
+    }
+
+    &:focus {
+      border: 2px solid var(--spectrum-textfield-border-color-key-focus, var(--spectrum-alias-border-color-focus));
+    }
+
+  }
+
+  .item-toggle {
+    &>.toggle {
+      pointer-events: none;
+    }
+
+    &>span:hover {
+      cursor: pointer;
+    }
+  }
+
+  // Indent for the button
+  /*
+  .spectrum-SideNav-itemLink::before {
+    content: '';
+    width: 20px;
+    display: inline-flex;
+  }*/
+
+  .open>.toggle:after {
+    transform: rotate(90deg);
+  }
+
+
+  .expand-all {
+    display: block;
+    background: transparent;
+    font-size: $font-size-xsm;
+    letter-spacing: .02em;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: -2.2em;
+    color: $secondary-text-color;
+    z-index: 2;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $body-font-color;
+    }
+  }
+
+}
+
+
+
+@media ($medium-screen) {
+
+  .sidebar {
+
+    width: 100%;
+    height: auto;
+    padding: 0;
+    position: relative;
+
+    .sidebar-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: all $transition-duration;
+      padding: 0 20px 0 30px;
+      visibility: hidden;
+    }
+
+    .toc-toggler {
+      position: relative;
+      display: block;
+      width: 100%;
+      border: none;
+      text-align: left;
+      background: $light-gray-color;
+      padding: 10px 20px 10px 40px;
+
+      &,
+      &:visited {
+        color: $body-font-color;
+      }
+
+      &:active,
+      &:hover {
+        text-decoration: none;
+      }
+
+      &:after {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 14px;
+        width: 18px;
+        height: 18px;
+        background: url('../i/icons/chevron-right.svg') no-repeat center;
+        opacity: .6;
+
+        border-color: $body-font-color transparent transparent transparent;
+        transition: all $transition-duration;
+      }
+
+    }
+
+
+  }
+
+
+  .expanded {
+
+    .sidebar-wrapper {
+      max-height: 9999px;
+      visibility: visible;
+    }
+
+    .toc-toggler::after {
+      transform: rotate(90deg);
+    }
+
+  }
+
+}

@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0 2em 0;
+  @extend .spectrum-Table !optional;
+  @extend .spectrum-Table--sizeM;
+}
+
+.content table p,
+.content table li,
+.content table dl {
+  font-size: inherit;
+}
+
+table.fixed {
+  table-layout: fixed;
+}
+
+.content table p,
+.content table li,
+.content table dl {
+  font-size: inherit;
+}
+
+th {
+  @extend .spectrum-Table-headCell;
+}
+
+tbody {
+  @extend .spectrum-Table-body;
+}
+
+tr {
+  @extend .spectrum-Table-row;
+}
+
+td {
+  @extend .spectrum-Table-cell;
+
+  &.whatsnew {
+    width: 600px;
+    padding-right: 40px;
+  }
+}

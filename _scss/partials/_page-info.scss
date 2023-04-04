@@ -1,0 +1,59 @@
+.page-info {
+  width: $page-info-width;
+  position: absolute;
+  right: 0;
+  top:0;
+  height: 100%;
+  padding: 20px 0 0 20px;
+
+  #markdown-toc {
+    display: block;
+  }
+}
+
+.page-contributor {
+
+  position: relative;
+  padding: 5px 5px 5px 25px;
+  margin: 0;
+  background: #fdf4e1;
+
+  a {
+    color: #95360B;
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    background: url(../i/icons/star.svg) center center no-repeat;
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 5px;
+    left: 4px;
+  }
+}
+
+
+.page-updated {
+  cursor: help;
+}
+
+
+@media ( $medium-to-large-screen ) {
+  .page-info {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: auto;
+    position: relative;
+    padding: 20px 20px 20px 40px;
+  }
+}
+
+.page-tags {
+  margin: 0 0 30px 0;
+}

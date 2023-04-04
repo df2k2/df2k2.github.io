@@ -1,55 +1,102 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you:
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+title: Adobe Commerce Documentation Theme
+description: Templates, styles and scripts for Adobe Commerce Documentation portals.
+logo: Docs Theme
+baseurl: ""
+permalink: pretty
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+version: 8
 
-title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter_opts:
+    css_class: 'highlighter'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
 
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
+environment: develop
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+collections:
+  videos:
+    output: true
+    permalink: "/videos/:path/"
+
+github_link: true
+feedback_link: true
+
+# This will force "default" layout for all of the pages, if not specified
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+      lang: "en"
+      github_link: true
+      feedback_link: true
+      github_files: https://github.com/commerce-docs/devdocs-theme/blob/
+      github_repo: https://github.com/commerce-docs/devdocs-theme/
+
+  -
+    scope:
+      path: "video"
+      type: videos
+    values:
+      layout: video
+      guide_version: "2.3"
+
+
+algolia:
+  application_id: 'E642SEDTHL'
+  index_name: 'devdocs'
+  # search-only API key allows to search data immediately.
+  # It is safe to use in production front-end code.
+  # Used at src/_includes/layout/header-scripts.html
+  # For more details, refer to: https://www.algolia.com/doc/guides/security/api-keys/#search-only-api-key
+  search_only_key: 'd2d0f33ab73e291ef8d88d8b565e754c' #gitleaks:allow
+  lazy_update: true
+  excluded_files:
+    - vagrant
+    - common
+    - js
+    - i
+    - schemas
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - vagrant.sh
+  - README.md
+  - node_modules
+  - vendor
+  - .git
+  - .idea
+
+app_switcher:
+  apps:
+    - label: Developer
+      children:
+
+      - label: Commerce Developer Guide
+        url: https://devdocs.magento.com/
+
+      - label: PWA Studio
+        url: https://developer.adobe.com/commerce/pwa-studio/
+
+      - label: Order Management
+        url: https://omsdocs.magento.com/
+
+    - label: Merchant
+      children:
+
+      - label: Commerce User Guide
+        url: https://docs.magento.com/user-guide/
+
+      - label: Order Management
+        url: https://omsdocs.magento.com/userguides/
+
+      - label: Commerce Reporting
+        url: https://experienceleague.adobe.com/docs/commerce-business-intelligence/mbi/getting-started.html

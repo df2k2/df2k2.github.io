@@ -1,0 +1,101 @@
+.quick-search {
+  display: none;
+  padding: 6px 20px 0 20px;
+  width: 100%;
+  position: absolute;
+  height: $header-height;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  align-items: center;
+
+  .search-active & {
+    display: flex;
+  }
+}
+
+.quick-search .search-form {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 488px;
+  align-items: center;
+}
+
+.search-active .site-header .menu-btn {
+  z-index: 1;
+}
+
+.search-active .site-nav {
+  border-bottom-color: transparent;
+}
+
+.search-active .site-header .nav-actions {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+// Hide other header elements when search is active
+.search-active .site-header .nav-main-wrap,
+.search-active .search-btn,
+.search-active .menu-btn,
+.search-active .version-switcher {
+  visibility: hidden;
+}
+
+.algolia-autocomplete {
+  flex: 1 0 auto;
+}
+
+.suggestions-footer {
+  text-align: center;
+  padding: 8px;
+}
+
+.algolia-autocomplete .aa-input,
+.algolia-autocomplete .aa-hint {}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #9b9b9b;
+  margin-top: 2px;
+  border-radius: 2px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion a {
+  display: block;
+  padding: 5px 15px;
+  color: $body-font-color;
+  text-decoration: none;
+}
+
+.suggestion-category {
+  padding: 8px 15px;
+  border-top: 1px solid #d2d2d2;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion a:hover {
+  color: $body-font-color;
+  background: $dropdown-link-hover-bg;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background: $dropdown-link-hover-bg;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}

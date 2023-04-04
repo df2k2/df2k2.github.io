@@ -1,0 +1,70 @@
+.page-footer {
+
+  padding: 20px 40px;
+  z-index: 3;
+
+  .container {
+    position: relative;
+    display: flex;
+    max-width: 100%;
+    padding: 10px 0 0 0;
+
+    border-top: 2px solid var(--spectrum-tabs-m-rule-color, var(--spectrum-global-color-static-gray-200))
+
+  }
+
+
+  .copyright-links {
+    flex: 1 0 0;
+    padding: 0 0 10px 0;
+
+    a, a:visited, a:active {
+      color: var(--spectrum-body-m-text-color);
+    }
+  }
+
+  .copyright-date {
+    text-align: right;
+    color: var(--spectrum-global-color-gray-600);
+  }
+
+  .nav {
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-links > li {
+    display: inline-block;
+    margin: 0 30px 10px 0 ;
+  }
+
+
+  // For two colum layout, offset the footer to support the fixed sidebar
+  .layout-default &, .layout-videos &, .layout-video &, .layout-specification &, .layout-tutorial & {
+    margin-left: $sidebar-width;
+  }
+
+  @media ( $medium-screen ) {
+
+    .layout-default &, .layout-videos &, .layout-video &, .layout-specification & {
+      margin-left: 0;
+    }
+
+  }
+
+  @media ( $small-screen ) {
+
+    padding: 10px 20px;
+
+    .container {
+      flex-direction: column;
+    }
+
+    .copyright-date {
+      text-align: left;
+    }
+
+  }
+
+
+}

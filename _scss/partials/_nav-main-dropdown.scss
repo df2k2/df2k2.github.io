@@ -1,0 +1,133 @@
+// Advanced nav main
+$nav-main-section-width: 300px;
+
+// First level
+.nav-main-item {
+  position: relative;
+  outline: 0;
+
+  &>a,
+  &>span {
+    //outline: 0;
+    z-index: 2;
+    -webkit-user-drag: none;
+  }
+
+  &>span {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &.is-open>a,
+  &.is-open>span {
+    transition-delay: 0.05s; // small delay needed to synchronise JS appearance event
+  }
+
+  // Increase the width of the hover area by 40px to help with the dropdown
+  &.is-open>a::after,
+  &.is-open>span::after {
+    content: '';
+    height: 100%;
+    background: transparent;
+    display: block;
+    position: absolute;
+    width: calc(100% + 40px);
+    left: -20px;
+    top: 0;
+  }
+
+  // no-js fallback
+  .no-js &:hover,
+  .no-js &:focus,
+  &.is-open {
+    .nav-popup {
+      visibility: visible;
+      opacity: 1;
+      left: auto;
+      transition-delay: 0.05s;
+    }
+  }
+
+}
+
+// Popover (second Level of the navigation)
+.nav-popup {
+  display: flex;
+  flex-flow: row;
+
+  background-clip: padding-box;
+
+  padding: $spacing * 2;
+
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  min-width: $nav-main-section-width;
+  transform: translateX(- $spacing * 4);
+
+  transition-property: opacity, visibility;
+  transition-duration: $transition-duration;
+
+  z-index: 1;
+
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0;
+    }
+  }
+
+  &>.nav-section {
+    min-width: $nav-main-section-width;
+    padding: 0;
+    @extend .spectrum-Menu;
+  }
+
+  &>ul {
+    @extend .spectrum-Menu;
+  }
+
+  // Popup Mobile view: always visible
+  @media ($mobile-threshold) {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    padding: 0 $spacing * 2 $spacing * 4;
+    visibility: visible;
+    display: block;
+    box-shadow: none;
+    border: none;
+
+  }
+}
+
+
+@media ($mobile-threshold) {
+
+  .nav-main {
+    padding: 0 20px 0 54px;
+    display: block;
+  }
+
+  .nav-popup {
+    transform: none;
+  }
+
+  .nav-main .nav-main-item {
+    margin: 0 !important;
+    height: auto;
+  }
+
+  .nav-main>li.is-selected::after {
+    width: 2px;
+    height: 46px;
+    top: 0;
+    left: -20px;
+  }
+}

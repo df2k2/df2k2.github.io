@@ -1,0 +1,222 @@
+code,
+pre {
+  font-family: $code-font-family;
+}
+
+// Inline code
+
+:not(pre)>code {
+  padding: 3px 3px 3px 3px;
+  border-radius: 3px;
+  border: 1px solid #3333331a;
+  background: $code-background-color;
+  color: lighten($body-font-color, 20%);
+  word-wrap: break-word;
+  font-size: 91%;
+}
+
+// Code format in headers
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code {
+  white-space: nowrap;
+}
+
+a code {
+  color: inherit;
+}
+
+// Blocks of code
+pre {
+  display: block;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+
+  code {
+    font-size: $font-size-sm;
+    white-space: pre;
+    word-wrap: normal;
+  }
+}
+
+// Copy button
+.pre-wrap {
+  position: relative;
+
+
+  &:hover {
+
+    .btn-copy,
+    .btn-no-copy {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .btn-copy,
+  .btn-no-copy {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    font-size: 12px;
+    user-select: none;
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    right: 0;
+  }
+
+  .btn-copy {
+    cursor: pointer;
+  }
+
+  .btn-no-copy {
+    cursor: default;
+    outline: none;
+    background: darken($light-gray-color, 5%);
+
+    &:active,
+    &:hover {
+      background: darken($light-gray-color, 5%);
+    }
+  }
+}
+
+// Add $ to the bash code examples
+.language-bash code:before {
+  display: inline;
+  content: '$';
+  margin-right: $spacing;
+  user-select: none;
+}
+
+// Code block with highlight
+
+.highlight {
+  line-height: 20px;
+  position: relative;
+  background-color: $code-background-color;
+  border-radius: 4px;
+  color: $body-font-color;
+  margin: 0 0 $spacing * 4;
+  overflow: auto;
+  max-height: 700px;
+  border: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+// TODO: Get rid of this hack
+figure.highlight pre {
+  // fix for spacing in liquid highlight tags
+  padding: $spacing * 2;
+
+  .rouge-table {
+    margin: -$spacing * 2;
+  }
+}
+
+.highlighter-rouge {
+  pre {
+    padding: $spacing * 2;
+  }
+
+  .rouge-table {
+    margin: -$spacing * 2;
+  }
+
+  &.language-bash {
+    code:before {
+      display: none;
+    }
+
+    .rouge-gutter.gl {
+      display: none;
+    }
+
+    .rouge-code {
+      position: relative;
+
+      pre:before {
+        display: inline;
+        content: '$';
+        margin-right: $spacing;
+        user-select: none;
+      }
+    }
+  }
+}
+
+// Line numbers
+.rouge-table {
+  margin: 0;
+  max-width: 100%;
+  border: none;
+
+  tbody {
+    background: transparent;
+  }
+
+  td {
+    padding: 0;
+    border: none !important;
+  }
+
+  tr {
+    border: none;
+  }
+
+  tr:hover {
+    background: none;
+    cursor: default;
+  }
+
+  .rouge-code,
+  .code {
+    pre {
+      padding: $spacing * 2;
+      font-size: 1rem;
+    }
+  }
+
+  // Column with line numbers
+  .gl {
+    width: 35px;
+  }
+
+  .lineno {
+    overflow: hidden;
+    width: 100%;
+    min-width: 35px;
+    text-align: center;
+    opacity: 0.4;
+    padding: $spacing * 2 0;
+    user-select: none;
+  }
+}
+
+// Hide line numbers for all code blocks
+.rouge-table .gl {
+  display: none;
+}
+
+// Show line numbers for specific languages
+.language-json,
+.language-php,
+.language-html,
+.language-xml,
+.language-js,
+.language-javascript,
+.language-scss,
+.language-css,
+.language-yaml {
+  .rouge-table {
+    .gl {
+      display: table-cell;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+// Spectrum overrides
+
+.spectrum-InLineAlert-header {
+  @extend .spectrum-Body;
+  @extend .spectrum-Body--sizeL !optional;
+  display: block;
+  font-weight: 700
+}
+
+.spectrum-InLineAlert-edition {
+  @extend .spectrum-InLineAlert !optional;
+  display: flex;
+}
+
+[dir="ltr"] .spectrum-InLineAlert-header-edition {
+  padding-right: 20px;
+}
+
+[dir="rtl"] .spectrum-InLineAlert-header-edition {
+  padding-left: 20px;
+}
+
+.spectrum-InLineAlert-header-edition {
+  @extend .spectrum-InLineAlert-header !optional;
+  line-height: revert;
+}
+
+.spectrum-InLineAlert-content-edition {
+  @extend .spectrum-InLineAlert-content !optional;
+  margin: revert;
+}
+
+
+.bs-callout,
+.bs-callout-info,
+.bs-callout-warning,
+.bs-callout-tip,
+.bs-callout-tutorial {
+  @extend .spectrum-InLineAlert;
+  width: 100%;
+  min-width: auto;
+  padding-right: 50px;
+  padding-top: var(--spectrum-global-dimension-static-size-200);
+  padding-bottom: var(--spectrum-global-dimension-static-size-200);
+  padding-left: var(--spectrum-global-dimension-static-size-200);
+  margin-bottom: 1.5rem;
+
+  &:before {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    top: 20px;
+    right: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  // p {
+  //   margin-bottom: 0;
+  // }
+
+  // p:last-child {
+  //   margin-bottom: 0;
+  // }
+}
+
+.bs-callout-info {
+  @extend .spectrum-InLineAlert--info;
+
+  &:before {
+    background-image: url(../i/icons/help.svg);
+  }
+}
+
+.bs-callout-warning {
+  @extend .spectrum-InLineAlert--negative;
+
+  &:before {
+    background-image: url(../i/icons/warning.svg);
+  }
+}
+
+.bs-callout-tip {
+
+  @extend .spectrum-InLineAlert--success;
+
+  &:before {
+    background-image: url(../i/icons/checkmark.svg);
+  }
+}
+
+.bs-callout-tutorial {
+  &:before {
+    background-image: url(../i/icons/tutorial.svg);
+  }
+}
+
+.message-banner {
+  @extend .bs-callout-warning;
+
+  &.index {
+    font-size: 100%;
+  }
+}
+
+.page-intro .message-banner,
+.page-intro .bs-callout .page-intro .bs-callout-info,
+.page-intro .bs-callout-warning,
+.page-intro .bs-callout-tutorial,
+.page-intro .bs-callout-tip {
+  flex-basis: 100%;
+}

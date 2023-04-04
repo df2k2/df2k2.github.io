@@ -1,0 +1,108 @@
+/* These monospace typefaces provide the best distinction
+between code words and regular words within paragraphs.
+Courier is for browsers on macOS. Consolas is to force
+all Windows browsers to use it instead of Courier New,
+which is rendered far too thin and light for accessibility.
+Limiting the monospace fonts to these two helps developers
+to more easily scan the text for various classes, functions,
+variables, and file names they want to quickly find.
+See https://www.granneman.com/webdev/coding/css/fonts-and-formatting/web-browser-font-defaults
+*/
+$code-font-family: Courier,
+Consolas,
+monospace;
+
+$font-size-sm: 0.875rem;
+$font-size-xsm: 0.7rem;
+
+$font-weight-light: 300;
+$font-weight-normal: normal;
+$font-weight-medium: 500;
+$font-weight-bold: bold;
+
+$line-height-base: 1.5;
+
+$spacing: 5px;
+
+$section-padding: 2rem 1.5rem;
+$container-width: 960px;
+$container-width-large: 1080px;
+
+$sidebar-width: 270px;
+$page-info-width: 200px;
+
+$header-height: 46px;
+
+// Breakpoints
+
+$small-screen: 'max-width: 768px';
+$medium-screen: 'max-width: 1023px';
+$medium-to-large-screen: 'max-width: 1200px';
+$large-screen: 'min-width: 1500px';
+
+$compact-threshold: 'max-width: 1136px';
+$mobile-threshold: 'max-width: 1023px';
+
+// Colors
+
+$brand-color: #f26322;
+$body-font-color: #2b2b2c;
+$accent-color: var(--spectrum-link-primary-m-text-color, var(--spectrum-global-color-blue-600));
+$secondary-text-color: #767676; // Accessible on the white background
+$secondary-large-text-color: #939393; // Contrast ratio is 3.07. Meets AA-3 goal for 24px 400 text on white background
+
+$light-gray-color: #f5f5f5;
+$dark-gray-color: #888;
+$beige-color: #cac3b4;
+
+$footer-color: #a6abb0;
+$footer-link-color: #d8d9da;
+$footer-background-color: #31302b;
+
+$link-color: #095aba;
+$link-hover-color: #cc0000;
+$link-active-color: #ec632e;
+$link-visited-color: #609;
+
+$border-color: #d2d2d2;
+
+$code-background-color: rgb(250, 250, 250);
+
+// Buttons
+
+$btn-color: $body-font-color;
+$btn-bg-color: #ccc;
+
+$btn-primary-color: #fff;
+$btn-primary-bg-color: rgb(20, 115, 230);
+
+// Dropdown
+
+$dropdown-bg: #fff;
+$dropdown-border-color: #ccc;
+$dropdown-border-width: 1px;
+$dropdown-divider-bg: #e5e5e5;
+
+$dropdown-link-color: $body-font-color;
+$dropdown-link-hover-color: $body-font-color;
+$dropdown-link-hover-bg: #f2f3f3;
+
+$dropdown-link-active-color: $link-color;
+$dropdown-link-active-bg: $link-color;
+
+$dropdown-link-disabled-color: #ccc;
+$dropdown-header-color: #ccc;
+
+$caret-width: 0.3em;
+$caret-width-lg: $caret-width;
+
+$border-radius: 0;
+$line-height: 1.3;
+
+$transition-duration: 0.1s;
+
+// Z Index
+
+$zindex-appbar: 1000;
+$zindex-nav-fader: 900;
+$zindex-dropdown: 9999;

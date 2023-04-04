@@ -1,0 +1,187 @@
+
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown .dropdown-toggle {
+  width: 100%;
+  text-align: left;
+  text-transform: none;
+  padding-left: $spacing*2;
+  padding-right: $spacing*4;
+
+  // Generate the caret automatically
+  &::after {
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 0;
+    width: 0;
+    height: 0;
+    margin-right: .5rem;
+    content: "";
+    border-top: $caret-width solid;
+    border-right: $caret-width solid transparent;
+    border-left: $caret-width solid transparent;
+    transition: transform .2s;
+  }
+
+  // Prevent the focus on the dropdown toggle when closing dropdowns
+  /*
+  &:focus {
+    outline: 0;
+  }*/
+
+}
+
+
+.spectrum-Picker-icon {
+  background: url(../i/icons/chevron-down.svg);
+  background-position: center;
+}
+
+
+// The dropdown menu
+.dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: $zindex-dropdown;
+  display: none; // none by default, but block on "open" of the menu
+}
+
+.menu-top .dropdown-menu {
+  top: -100%;
+}
+
+// Dividers (basically an `<hr>`) within the dropdown
+.dropdown-divider {
+  border-bottom: 1px solid #eee;
+}
+
+// Links, buttons, and more within the dropdown menu
+//
+// `<button>`-specific styles are denoted with `// For <button>s`
+.dropdown .dropdown-menu .dropdown-item {
+  display: block;
+  padding: $spacing*2 $spacing*3;
+  margin: 0;
+  width: 100%;
+  clear: both;
+  font-weight: normal;
+  font-size: $font-size-sm;
+  line-height: $line-height;
+  color: $dropdown-link-color;
+  text-align: inherit;
+  white-space: nowrap; // prevent links from randomly breaking onto new lines
+  background: none; // For `<button>`s
+  border: 0; // For `<button>`s
+  text-decoration: none;
+
+  &:hover {
+    background: $light-gray-color;
+    color: $dropdown-link-hover-color;
+  }
+
+  // Active state
+  &.active {
+	  /*
+    @include plain-hover-focus {
+      color: $dropdown-link-active-color;
+      text-decoration: none;
+      background-color: $dropdown-link-active-bg;
+      outline: 0;
+	}*/
+  }
+
+  // Disabled state
+  //
+  // Gray out text and ensure the hover/focus state remains gray
+  &.disabled {
+	  /*
+    @include plain-hover-focus {
+      color: $dropdown-link-disabled-color;
+    }
+
+    // Nuke hover/focus effects
+    @include hover-focus {
+      text-decoration: none;
+      cursor: $cursor-disabled;
+      background-color: transparent;
+      background-image: none; // Remove CSS gradient
+      @include reset-filter();
+	}*/
+  }
+}
+
+// Open state for the dropdown
+.dropdown.is-open {
+  // Show the menu
+  > .dropdown-menu {
+    display: block;
+  }
+
+  // Remove the outline when :focus is triggered
+  > a {
+    outline: 0;
+  }
+}
+
+// Menu positioning
+//
+// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
+// menu with the parent.
+.dropdown-menu.dropdown-menu-right {
+  right: 0;
+  left: auto; // Reset the default from `.dropdown-menu`
+}
+.dropdown-menu.dropdown-menu-left {
+  left: 0;
+  right: auto;
+}
+.dropdown-menu.dropdown-menu-top {
+  top: -100%;
+}
+// With v3, we enabled auto-flipping if you have a dropdown within a right
+// aligned nav component. To enable the undoing of that, we provide an override
+// to restore the default dropdown menu alignment.
+//
+// This is only for left-aligning a dropdown menu within a `.navbar-right` or
+// `.pull-right` nav component.
+.dropdown-menu-left {
+  right: auto;
+  left: 0;
+}
+
+// Dropdown section headers
+.dropdown-menu li.dropdown-header {
+  display: block;
+  padding: $spacing*2 $spacing*3;
+  font-size: x-small;
+  line-height: $line-height;
+  color: #999;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap; // as with > li > a
+}
+
+// Backdrop to catch body clicks on mobile, etc.
+.dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: ($zindex-dropdown - 10);
+}
+
+// Right aligned dropdowns
+.pull-right > .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+[dir="ltr"] .spectrum-Picker {
+    padding-right: 5px;
+}
